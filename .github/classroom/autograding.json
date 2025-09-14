@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "ProdutoTest",
+      "setup": "mvn -q -Dtest=ProdutoTest test",
+      "run": "echo PASS",
+      "input": "",
+      "expected_output": "PASS",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 7
+    },
+    {
+      "name": "MainTest",
+      "setup": "mvn -q -Dtest=MainTest test",
+      "run": "echo PASS",
+      "input": "",
+      "expected_output": "PASS",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 3
+    }
+  ]
+}
