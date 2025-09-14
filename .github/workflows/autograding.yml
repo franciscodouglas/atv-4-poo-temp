@@ -1,0 +1,33 @@
+name: Autograding Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  repository_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    # evita loop quando o próprio bot do Classroom dispara ações
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Run JUnit tests
+        run: mvn -B -q -DskipTests=false test
+
+      - name: GitHub Classroom Autograding
+        uses: education/autograding@v1
